@@ -9,6 +9,7 @@ body {
   height: 100vh;
 }
 
+/* Snow layer */
 .snow {
   position: fixed;
   top: 0;
@@ -19,6 +20,7 @@ body {
   overflow: hidden;
 }
 
+/* Each snowflake */
 .snowflake {
   position: absolute;
   top: -10px;
@@ -236,6 +238,7 @@ body {
   pointer-events: auto;
 }
 
+/* OVERLAY PANEL */
 .overlay-panel {
   width: 85vw;
   max-width: 550px;
