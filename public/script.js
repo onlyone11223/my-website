@@ -1,11 +1,11 @@
 const panel = document.getElementById("panel");
 
 const buyButton = document.getElementById("buyButton");
+const detailsButton = document.getElementById("detailsButton");
 
 const prevArrow = document.getElementById("prevArrow");
 const nextArrow = document.getElementById("nextArrow");
 
-const detailsButton = document.getElementById("detailsButton");
 const detailsOverlay = document.getElementById("detailsOverlay");
 const closeDetails = document.getElementById("closeDetails");
 
@@ -46,10 +46,12 @@ prevArrow.addEventListener("click", toggleMode);
 
 detailsButton.addEventListener("click", () => {
   detailsOverlay.classList.add("show");
+  panel.style.opacity = "0"; // hide panel
 });
 
 closeDetails.addEventListener("click", () => {
   detailsOverlay.classList.remove("show");
+  panel.style.opacity = "1"; // show panel
 });
 
 buyButton.addEventListener("click", async () => {
@@ -62,7 +64,7 @@ buyButton.addEventListener("click", async () => {
   window.location = data.url;
 });
 
-// MOUSE MOVE TILT
+// Mouse tilt
 window.addEventListener("mousemove", (e) => {
   const x = (e.clientX / window.innerWidth) * 2 - 1;
   const y = (e.clientY / window.innerHeight) * 2 - 1;
@@ -73,7 +75,7 @@ window.addEventListener("mousemove", (e) => {
   panel.style.transform = `rotateX(${20 + rotateX}deg) rotateY(${-10 + rotateY}deg)`;
 });
 
-// SNOW EFFECT
+// Snow effect
 const snowContainer = document.querySelector(".snow");
 
 function createSnowflake() {
