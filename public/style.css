@@ -93,7 +93,7 @@ body {
 }
 
 .image-container {
-  margin-top: 5px; /* moved up slightly */
+  margin-top: 5px;
   width: 100%;
   height: 0;
   padding-top: 56.25%;
@@ -108,14 +108,14 @@ body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 70%;
+  width: 55%;
   height: 100;
   object-fit: cover;
   border-radius: 15px;
 }
 
 .price {
-  margin-top: 12px; /* moved up */
+  margin-top: 12px;
   font-weight: bold;
   font-size: 22px;
   color: #fff;
@@ -131,12 +131,11 @@ body {
   color: #fff;
 }
 
-/* Button row */
 .btn-row {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-top: 10px; /* move buttons up */
+  margin-top: 10px;
 }
 
 .btn {
@@ -156,7 +155,6 @@ body {
   color: #000;
 }
 
-/* Arrow Buttons */
 .arrow {
   position: absolute;
   top: 50%;
@@ -188,16 +186,29 @@ body {
   right: -25px;
 }
 
-/* Video style */
 #productVideo {
-  width: 80%;       /* smaller */
-  height: 80%;      /* smaller */
+  width: 80%;
+  height: 80%;
   border-radius: 15px;
-  margin: 0 auto;   /* center */
-  display: block;   /* center */
+  margin: 0 auto;
+  display: block;
 }
 
-/* OVERLAY BACKGROUND */
+/* BEST DEAL BOX */
+.best-deal {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
 .overlay {
   position: fixed;
   top: 0;

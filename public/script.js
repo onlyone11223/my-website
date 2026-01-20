@@ -89,5 +89,5 @@ function createSnowflake() {
 
 setInterval(createSnowflake, 200);
 
-// Start in normal mode (this prevents video from playing automatically)
+// Start in normal mode (prevents video from playing automatically)
 showNormal();
