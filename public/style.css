@@ -151,6 +151,8 @@ body {
   font-size: 16px;
   transition: all 0.2s ease;
   font-weight: bold;
+  position: relative;
+  top: 25px; /* MOVE BUTTONS UP */
 }
 
 .btn:hover {
