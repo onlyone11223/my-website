@@ -1,74 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="scene">
-    <div class="panel" id="panel">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="snow"></div>
 
-      <!-- NORMAL PANEL CONTENT -->
-      <div class="content" id="contentNormal">
-        <h1 class="title">Static Resells</h1>
+    <div class="scene">
+      <div class="panel" id="panel">
 
-        <div class="image-container">
-          <img src="product.png" alt="Product Image">
+        <div class="content" id="contentNormal">
+          <h1 class="title">Static Resells</h1>
+
+          <div class="image-container">
+            <img src="product.png" alt="Product Image" />
+          </div>
+
+          <p class="price">
+            <span class="new-price">$9.99</span>
+            <span class="old-price">$19.99</span>
+          </p>
+
+          <div class="btn-row" id="btnRow">
+            <button class="btn" id="detailsButton">Details</button>
+            <button class="btn" id="buyButton">Buy Now</button>
+          </div>
         </div>
 
-        <p class="price">
-          <span class="new-price">$9.99</span>
-          <span class="old-price">$19.99</span>
+        <div class="content" id="contentVideo">
+          <div class="video-container">
+            <video id="productVideo" controls autoplay loop>
+              <source src="video.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <!-- ARROWS -->
+        <button class="arrow left" id="prevArrow">‹</button>
+        <button class="arrow right" id="nextArrow">›</button>
+
+      </div>
+    </div>
+
+    <!-- DETAILS OVERLAY -->
+    <div id="detailsOverlay" class="overlay">
+      <div class="overlay-panel">
+        <button class="closeBtn" id="closeDetails">X</button>
+        <h2>Details</h2>
+
+        <p>
+          Please enter a valid email address at checkout so your supplier file can be sent immediately after purchase. Access will be delivered directly to the email you provide.
         </p>
 
-        <div class="btn-row" id="btnRow">
-          <button class="btn" id="detailsButton">Details</button>
-          <button class="btn" id="buyButton">Buy Now</button>
-        </div>
+        <p>
+          This is a digital product, and all sales are final. No refunds or exchanges will be issued once the file has been delivered.
+        </p>
+
+        <p>Includes:</p>
+        <ul>
+          <li>Airpods</li>
+          <li>Shoes</li>
+          <li>Hoodies</li>
+          <li>Cologne</li>
+          <li>And more!</li>
+        </ul>
       </div>
-
-      <!-- VIDEO PANEL CONTENT -->
-      <div class="content" id="contentVideo">
-        <h1 class="title">Static Resells</h1>
-
-        <div class="video-container">
-          <video id="productVideo" controls autoplay loop>
-            <source src="video.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <!-- ARROWS -->
-      <button class="arrow left" id="prevArrow">‹</button>
-      <button class="arrow right" id="nextArrow">›</button>
-
     </div>
-  </div>
 
-  <!-- DETAILS OVERLAY -->
-  <div id="detailsOverlay" class="overlay">
-    <div class="overlay-panel">
-      <button class="closeBtn" id="closeDetails">X</button>
-      <h2>Details</h2>
-
-      <p>
-        Please enter a valid email address at checkout so your supplier file can be sent immediately after purchase.
-      </p>
-
-      <p>
-        This is a digital product, and all sales are final. No refunds or exchanges will be issued once the file has been delivered.
-      </p>
-
-      <p>Includes:</p>
-      <ul>
-        <li>Airpods</li>
-        <li>Shoes</li>
-        <li>Hoodies</li>
-        <li>Cologne</li>
-        <li>And more!</li>
-      </ul>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
