@@ -1,50 +1,9 @@
-const panel = document.getElementById("panel");
-
+const panel = document.querySelector(".panel");
 const buyButton = document.getElementById("buyButton");
 const message = document.getElementById("message");
 
-const prevArrow = document.getElementById("prevArrow");
-const nextArrow = document.getElementById("nextArrow");
-
-const detailsButton = document.getElementById("detailsButton");
-const detailsOverlay = document.getElementById("detailsOverlay");
-const closeDetails = document.getElementById("closeDetails");
-
-const contentNormal = document.getElementById("contentNormal");
-const contentVideo = document.getElementById("contentVideo");
-const productVideo = document.getElementById("productVideo");
-
-let isVideoMode = false;
-
-function showNormal() {
-  contentNormal.style.display = "block";
-  contentVideo.style.display = "none";
-  isVideoMode = false;
-
-  productVideo.pause();
-  productVideo.currentTime = 0;
-}
-
-function showVideo() {
-  contentNormal.style.display = "none";
-  contentVideo.style.display = "block";
-  isVideoMode = true;
-  productVideo.play();
-}
-
-function toggleMode() {
-  if (isVideoMode) showNormal();
-  else showVideo();
-}
-
-buyButton.addEventListener("click", async () => {
-  const response = await fetch("/create-checkout-session", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-  });
-
-  const data = await response.json();
-  window.location = data.url;
+buyButton.addEventListener("click", () => {
+  message.innerText = "Purchase successful! (Demo mode)";
 });
 
 window.addEventListener("mousemove", (e) => {
@@ -78,16 +37,14 @@ function createSnowflake() {
 
 setInterval(createSnowflake, 200);
 
+const detailsButton = document.getElementById("detailsButton");
+const detailsOverlay = document.getElementById("detailsOverlay");
+const closeDetails = document.getElementById("closeDetails");
+
 detailsButton.addEventListener("click", () => {
-  detailsOverlay.classList.add("show");
-  panel.classList.add("hide");
+  detailsOverlay.style.display = "flex";
 });
 
 closeDetails.addEventListener("click", () => {
-  detailsOverlay.classList.remove("show");
-  panel.classList.remove("hide");
+  detailsOverlay.style.display = "none";
 });
-
-nextArrow.addEventListener("click", toggleMode);
-prevArrow.addEventListener("click", toggleMode);
-
