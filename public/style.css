@@ -109,7 +109,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 55%;
-  height: auto;
+  height: 100;
   object-fit: cover;
   border-radius: 15px;
 }
