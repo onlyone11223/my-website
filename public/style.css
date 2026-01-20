@@ -151,8 +151,12 @@ body {
   font-size: 16px;
   transition: all 0.2s ease;
   font-weight: bold;
+}
+
+/* Move buttons higher and keep inside panel */
+#detailsButton, #buyButton {
   position: relative;
-  top: 25px; /* MOVE BUTTONS UP */
+  top: -25px; /* MOVE BUTTONS UP */
 }
 
 .btn:hover {
@@ -194,8 +198,8 @@ body {
 
 /* Video style */
 #productVideo {
-  width: 80%;
-  height: 80%;
+  width: 90%;   /* BIGGER VIDEO */
+  height: 90%;
   border-radius: 15px;
   margin-top: 20px;
 }
