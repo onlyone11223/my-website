@@ -9,7 +9,6 @@ body {
   height: 100vh;
 }
 
-/* Snow layer */
 .snow {
   position: fixed;
   top: 0;
@@ -20,7 +19,6 @@ body {
   overflow: hidden;
 }
 
-/* Each snowflake */
 .snowflake {
   position: absolute;
   top: -10px;
@@ -32,12 +30,8 @@ body {
 }
 
 @keyframes fall {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
-  100% {
-    transform: translateY(110vh) translateX(40px);
-  }
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(110vh) translateX(40px); }
 }
 
 .scene {
@@ -83,7 +77,6 @@ body {
   }
 }
 
-/* CONTENT */
 .content {
   width: 100%;
   height: 100%;
@@ -99,9 +92,8 @@ body {
   margin-bottom: 10px;
 }
 
-/* Image */
 .image-container {
-  margin-top: 20px;
+  margin-top: 5px; /* moved up slightly */
   width: 100%;
   height: 0;
   padding-top: 56.25%;
@@ -123,7 +115,7 @@ body {
 }
 
 .price {
-  margin-top: 18px;
+  margin-top: 12px; /* moved up */
   font-weight: bold;
   font-size: 22px;
   color: #fff;
@@ -139,9 +131,15 @@ body {
   color: #fff;
 }
 
-/* Buttons */
+/* Button row */
+.btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px; /* move buttons up */
+}
+
 .btn {
-  margin-top: 10px;
   padding: 12px 24px;
   border: 2px solid #fff;
   border-radius: 10px;
@@ -151,12 +149,6 @@ body {
   font-size: 16px;
   transition: all 0.2s ease;
   font-weight: bold;
-}
-
-/* Move buttons higher and keep inside panel */
-#detailsButton, #buyButton {
-  position: relative;
-  top: -25px; /* MOVE BUTTONS UP */
 }
 
 .btn:hover {
@@ -198,10 +190,11 @@ body {
 
 /* Video style */
 #productVideo {
-  width: 90%;   /* BIGGER VIDEO */
-  height: 90%;
+  width: 80%;       /* smaller */
+  height: 80%;      /* smaller */
   border-radius: 15px;
-  margin-top: 20px;
+  margin: 0 auto;   /* center */
+  display: block;   /* center */
 }
 
 /* OVERLAY BACKGROUND */
@@ -228,7 +221,6 @@ body {
   pointer-events: auto;
 }
 
-/* OVERLAY PANEL */
 .overlay-panel {
   width: 85vw;
   max-width: 550px;

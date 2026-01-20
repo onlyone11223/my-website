@@ -8,7 +8,6 @@
 
     <div class="scene">
       <div class="panel" id="panel">
-
         <div class="content" id="contentNormal">
           <div class="title">Static Resells</div>
 
@@ -21,8 +20,11 @@
             <span class="old-price">$19.99</span>
           </p>
 
-          <button class="btn" id="detailsButton">Details</button>
-          <button class="btn" id="buyButton">Buy Now</button>
+          <div class="btn-row">
+            <button class="btn" id="detailsButton">Details</button>
+            <button class="btn" id="buyButton">Buy Now</button>
+          </div>
+
           <p id="message"></p>
         </div>
 
@@ -33,27 +35,21 @@
           </video>
         </div>
 
-        <!-- ARROWS -->
         <button class="arrow left" id="prevArrow">‹</button>
         <button class="arrow right" id="nextArrow">›</button>
-
       </div>
     </div>
 
-    <!-- DETAILS OVERLAY -->
     <div id="detailsOverlay" class="overlay">
       <div class="overlay-panel">
         <button class="closeBtn" id="closeDetails">X</button>
         <h2>Details</h2>
-
         <p>
           Please enter a valid email address at checkout so your supplier file can be sent immediately after purchase. Access will be delivered directly to the email you provide.
         </p>
-
         <p>
           This is a digital product, and all sales are final. No refunds or exchanges will be issued once the file has been delivered.
         </p>
-
         <p>Includes:</p>
         <ul>
           <li>Airpods</li>

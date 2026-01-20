@@ -1,12 +1,11 @@
 const panel = document.getElementById("panel");
 
 const buyButton = document.getElementById("buyButton");
-const message = document.getElementById("message");
+const detailsButton = document.getElementById("detailsButton");
 
 const prevArrow = document.getElementById("prevArrow");
 const nextArrow = document.getElementById("nextArrow");
 
-const detailsButton = document.getElementById("detailsButton");
 const detailsOverlay = document.getElementById("detailsOverlay");
 const closeDetails = document.getElementById("closeDetails");
 
@@ -20,7 +19,6 @@ function showNormal() {
   contentNormal.style.display = "block";
   contentVideo.style.display = "none";
   isVideoMode = false;
-
   productVideo.pause();
   productVideo.currentTime = 0;
 }
@@ -36,6 +34,19 @@ function toggleMode() {
   if (isVideoMode) showNormal();
   else showVideo();
 }
+
+nextArrow.addEventListener("click", toggleMode);
+prevArrow.addEventListener("click", toggleMode);
+
+detailsButton.addEventListener("click", () => {
+  detailsOverlay.classList.add("show");
+  panel.classList.add("hide");
+});
+
+closeDetails.addEventListener("click", () => {
+  detailsOverlay.classList.remove("show");
+  panel.classList.remove("hide");
+});
 
 buyButton.addEventListener("click", async () => {
   const response = await fetch("/create-checkout-session", {
@@ -77,16 +88,3 @@ function createSnowflake() {
 }
 
 setInterval(createSnowflake, 200);
-
-detailsButton.addEventListener("click", () => {
-  detailsOverlay.classList.add("show");
-  panel.classList.add("hide");
-});
-
-closeDetails.addEventListener("click", () => {
-  detailsOverlay.classList.remove("show");
-  panel.classList.remove("hide");
-});
-
-nextArrow.addEventListener("click", toggleMode);
-prevArrow.addEventListener("click", toggleMode);
