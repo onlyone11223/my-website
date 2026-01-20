@@ -9,7 +9,6 @@ body {
   height: 100vh;
 }
 
-/* Snow layer */
 .snow {
   position: fixed;
   top: 0;
@@ -20,7 +19,6 @@ body {
   overflow: hidden;
 }
 
-/* Each snowflake */
 .snowflake {
   position: absolute;
   top: -10px;
@@ -148,6 +146,21 @@ body {
   color: #fff;
 }
 
+/* VIDEO CENTERING */
+.video-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#productVideo {
+  width: 90%;
+  height: 70%;
+  border-radius: 15px;
+}
+
 /* Buttons */
 .btn-row {
   position: absolute;
@@ -205,13 +218,6 @@ body {
 
 .arrow.right {
   right: -25px;
-}
-
-/* Video style */
-#productVideo {
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
 }
 
 /* OVERLAY BACKGROUND */

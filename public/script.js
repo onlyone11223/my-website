@@ -1,7 +1,6 @@
 const panel = document.getElementById("panel");
 
 const buyButton = document.getElementById("buyButton");
-const message = document.getElementById("message");
 
 const prevArrow = document.getElementById("prevArrow");
 const nextArrow = document.getElementById("nextArrow");
@@ -14,11 +13,15 @@ const contentNormal = document.getElementById("contentNormal");
 const contentVideo = document.getElementById("contentVideo");
 const productVideo = document.getElementById("productVideo");
 
+const btnRow = document.querySelector(".btn-row");
+
 let isVideoMode = false;
 
 function showNormal() {
   contentNormal.style.display = "block";
   contentVideo.style.display = "none";
+  btnRow.style.display = "flex"; // show buttons
+
   isVideoMode = false;
 
   productVideo.pause();
@@ -28,6 +31,8 @@ function showNormal() {
 function showVideo() {
   contentNormal.style.display = "none";
   contentVideo.style.display = "block";
+  btnRow.style.display = "none"; // hide buttons
+
   isVideoMode = true;
   productVideo.play();
 }
@@ -86,8 +91,8 @@ detailsButton.addEventListener("click", () => {
 closeDetails.addEventListener("click", () => {
   detailsOverlay.classList.remove("show");
   panel.classList.remove("hide");
+  showNormal(); // ALWAYS go back to normal panel
 });
 
 nextArrow.addEventListener("click", toggleMode);
 prevArrow.addEventListener("click", toggleMode);
-

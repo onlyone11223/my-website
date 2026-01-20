@@ -9,6 +9,7 @@
     <div class="scene">
       <div class="panel" id="panel">
 
+        <!-- NORMAL CONTENT -->
         <div class="content" id="contentNormal">
           <h1 class="title">Static Resells</h1>
 
@@ -20,20 +21,22 @@
             <span class="new-price">$9.99</span>
             <span class="old-price">$19.99</span>
           </p>
+
+          <div class="btn-row">
+            <button class="btn" id="detailsButton">Details</button>
+            <button class="btn" id="buyButton">Buy Now</button>
+          </div>
         </div>
 
+        <!-- VIDEO CONTENT -->
         <div class="content" id="contentVideo">
           <h1 class="title">Static Resells</h1>
 
-          <video id="productVideo" controls autoplay loop>
-            <source src="video.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        <!-- BUTTONS ALWAYS ON PANEL -->
-        <div class="btn-row">
-          <button class="btn" id="detailsButton">Details</button>
-          <button class="btn" id="buyButton">Buy Now</button>
+          <div class="video-container">
+            <video id="productVideo" controls autoplay loop>
+              <source src="video.mp4" type="video/mp4" />
+            </video>
+          </div>
         </div>
 
         <!-- ARROWS -->
