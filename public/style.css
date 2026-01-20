@@ -9,7 +9,6 @@ body {
   height: 100vh;
 }
 
-/* Snow layer */
 .snow {
   position: fixed;
   top: 0;
@@ -20,7 +19,6 @@ body {
   overflow: hidden;
 }
 
-/* Each snowflake */
 .snowflake {
   position: absolute;
   top: -10px;
@@ -51,7 +49,7 @@ body {
 .panel {
   width: 85vw;
   max-width: 550px;
-  height: 430px;
+  height: 520px;   /* ↑ BIGGER PANEL HEIGHT */
   padding: 30px;
   background: #111;
   border-radius: 20px;
@@ -152,7 +150,6 @@ body {
 }
 
 .btn {
-  margin-top: 10px;
   padding: 12px 24px;
   border: 2px solid #fff;
   border-radius: 10px;
@@ -169,7 +166,6 @@ body {
   color: #000;
 }
 
-/* Arrow Buttons */
 .arrow {
   position: absolute;
   top: 50%;
@@ -201,14 +197,12 @@ body {
   right: -25px;
 }
 
-/* Video style */
 #productVideo {
   width: 100%;
   height: 100%;
   border-radius: 15px;
 }
 
-/* OVERLAY BACKGROUND */
 .overlay {
   position: fixed;
   top: 0;
@@ -232,7 +226,6 @@ body {
   pointer-events: auto;
 }
 
-/* OVERLAY PANEL */
 .overlay-panel {
   width: 85vw;
   max-width: 550px;
