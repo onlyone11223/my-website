@@ -55,18 +55,12 @@ body {
   border-radius: 20px;
   color: white;
   text-align: center;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
 
   transform-style: preserve-3d;
   transform: rotateX(20deg) rotateY(-10deg);
   animation: open 1.5s ease-out;
-
-  transition: transform 0.1s ease-out;
-  position: relative;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
 }
 
 .panel.hide {
@@ -85,20 +79,37 @@ body {
   }
 }
 
-/* CONTENT */
+/* BOTH MODES */
 .content {
   width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
+/* NORMAL MODE */
+#contentNormal {
+  display: block;
+}
+
+/* VIDEO MODE */
 #contentVideo {
   display: none;
 }
 
+/* TITLE */
+.title {
+  font-size: 32px;
+  margin: 0;
+  margin-bottom: 10px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+/* IMAGE */
 .image-container {
   margin-top: 10px;
   width: 100%;
@@ -121,6 +132,7 @@ body {
   border-radius: 15px;
 }
 
+/* PRICE */
 .price {
   margin-top: 18px;
   font-weight: bold;
@@ -138,21 +150,14 @@ body {
   color: #fff;
 }
 
-/* TITLE */
-.title {
-  font-size: 32px;
-  margin: 0;
-  margin-bottom: 10px;
-  color: white;
-  letter-spacing: 1px;
-}
-
-/* Buttons */
+/* BUTTONS FIXED TO BOTTOM */
 .btn-row {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 15px;
-  margin-top: auto; /* pushes buttons to bottom */
-  margin-bottom: 10px;
 }
 
 .btn {
@@ -172,6 +177,7 @@ body {
   color: #000;
 }
 
+/* ARROWS */
 .arrow {
   position: absolute;
   top: 50%;
@@ -190,11 +196,6 @@ body {
   z-index: 10;
 }
 
-.arrow:hover {
-  background: rgba(255, 255, 255, 0.8);
-  color: #000;
-}
-
 .arrow.left {
   left: -25px;
 }
@@ -209,6 +210,7 @@ body {
   border-radius: 15px;
 }
 
+/* OVERLAY */
 .overlay {
   position: fixed;
   top: 0;
