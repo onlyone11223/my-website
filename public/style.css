@@ -49,7 +49,7 @@ body {
 .panel {
   width: 85vw;
   max-width: 550px;
-  height: 520px; /* bigger panel */
+  height: 520px;
   padding: 30px;
   background: #111;
   border-radius: 20px;
@@ -85,12 +85,14 @@ body {
   }
 }
 
+/* IMPORTANT: make both contents identical */
 .content {
   width: 100%;
-  flex: 1;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start; /* keep everything aligned */
 }
 
 #contentVideo {
