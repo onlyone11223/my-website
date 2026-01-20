@@ -9,6 +9,7 @@ body {
   height: 100vh;
 }
 
+/* Snow layer */
 .snow {
   position: fixed;
   top: 0;
@@ -19,6 +20,7 @@ body {
   overflow: hidden;
 }
 
+/* Each snowflake */
 .snowflake {
   position: absolute;
   top: -10px;
@@ -50,17 +52,23 @@ body {
   width: 85vw;
   max-width: 550px;
   height: 520px;
-  padding: 20px;
+  padding: 30px;
   background: #111;
   border-radius: 20px;
   color: white;
   text-align: center;
-  position: relative;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   transform-style: preserve-3d;
   transform: rotateX(20deg) rotateY(-10deg);
   animation: open 1.5s ease-out;
+
+  transition: transform 0.1s ease-out;
+  position: relative;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
 }
 
 .panel.hide {
@@ -79,37 +87,28 @@ body {
   }
 }
 
-/* BOTH MODES */
+/* CONTENT */
 .content {
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 20px;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-/* NORMAL MODE */
-#contentNormal {
-  display: block;
-}
-
-/* VIDEO MODE */
 #contentVideo {
   display: none;
 }
 
-/* TITLE */
 .title {
   font-size: 32px;
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: white;
   letter-spacing: 1px;
 }
 
-/* IMAGE */
 .image-container {
   margin-top: 10px;
   width: 100%;
@@ -132,7 +131,6 @@ body {
   border-radius: 15px;
 }
 
-/* PRICE */
 .price {
   margin-top: 18px;
   font-weight: bold;
@@ -150,10 +148,10 @@ body {
   color: #fff;
 }
 
-/* BUTTONS FIXED TO BOTTOM */
+/* Buttons */
 .btn-row {
   position: absolute;
-  bottom: 25px;
+  bottom: 70px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -161,7 +159,7 @@ body {
 }
 
 .btn {
-  padding: 12px 24px;
+  padding: 14px 40px;
   border: 2px solid #fff;
   border-radius: 10px;
   background: transparent;
@@ -177,7 +175,7 @@ body {
   color: #000;
 }
 
-/* ARROWS */
+/* Arrow Buttons */
 .arrow {
   position: absolute;
   top: 50%;
@@ -196,6 +194,11 @@ body {
   z-index: 10;
 }
 
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
 .arrow.left {
   left: -25px;
 }
@@ -204,13 +207,14 @@ body {
   right: -25px;
 }
 
+/* Video style */
 #productVideo {
   width: 100%;
   height: 100%;
   border-radius: 15px;
 }
 
-/* OVERLAY */
+/* OVERLAY BACKGROUND */
 .overlay {
   position: fixed;
   top: 0;
@@ -234,6 +238,7 @@ body {
   pointer-events: auto;
 }
 
+/* OVERLAY PANEL */
 .overlay-panel {
   width: 85vw;
   max-width: 550px;
