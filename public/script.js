@@ -11,28 +11,25 @@ const closeDetails = document.getElementById("closeDetails");
 
 const contentNormal = document.getElementById("contentNormal");
 const contentVideo = document.getElementById("contentVideo");
-const productVideo = document.getElementById("productVideo");
 
-const btnRow = document.querySelector(".btn-row");
+const btnRow = document.getElementById("btnRow");
+const productVideo = document.getElementById("productVideo");
 
 let isVideoMode = false;
 
 function showNormal() {
-  contentNormal.style.display = "block";
+  contentNormal.style.display = "flex";
   contentVideo.style.display = "none";
   btnRow.style.display = "flex"; // show buttons
-
   isVideoMode = false;
-
   productVideo.pause();
   productVideo.currentTime = 0;
 }
 
 function showVideo() {
   contentNormal.style.display = "none";
-  contentVideo.style.display = "block";
+  contentVideo.style.display = "flex";
   btnRow.style.display = "none"; // hide buttons
-
   isVideoMode = true;
   productVideo.play();
 }
@@ -42,57 +39,22 @@ function toggleMode() {
   else showVideo();
 }
 
+nextArrow.addEventListener("click", toggleMode);
+prevArrow.addEventListener("click", toggleMode);
+
+detailsButton.addEventListener("click", () => {
+  detailsOverlay.classList.add("show");
+});
+
+closeDetails.addEventListener("click", () => {
+  detailsOverlay.classList.remove("show");
+});
+
 buyButton.addEventListener("click", async () => {
   const response = await fetch("/create-checkout-session", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
   });
-
   const data = await response.json();
   window.location = data.url;
 });
-
-window.addEventListener("mousemove", (e) => {
-  const x = (e.clientX / window.innerWidth) * 2 - 1;
-  const y = (e.clientY / window.innerHeight) * 2 - 1;
-
-  const rotateY = x * 15;
-  const rotateX = -y * 15;
-
-  panel.style.transform = `rotateX(${20 + rotateX}deg) rotateY(${-10 + rotateY}deg)`;
-});
-
-/* Snow effect */
-const snowContainer = document.querySelector(".snow");
-
-function createSnowflake() {
-  const snowflake = document.createElement("div");
-  snowflake.classList.add("snowflake");
-  snowflake.innerText = "❄";
-
-  snowflake.style.left = Math.random() * 100 + "vw";
-  snowflake.style.fontSize = Math.random() * 20 + 10 + "px";
-  snowflake.style.opacity = Math.random();
-
-  snowContainer.appendChild(snowflake);
-
-  setTimeout(() => {
-    snowflake.remove();
-  }, 8000);
-}
-
-setInterval(createSnowflake, 200);
-
-detailsButton.addEventListener("click", () => {
-  detailsOverlay.classList.add("show");
-  panel.classList.add("hide");
-});
-
-closeDetails.addEventListener("click", () => {
-  detailsOverlay.classList.remove("show");
-  panel.classList.remove("hide");
-  showNormal(); // ALWAYS go back to normal panel
-});
-
-nextArrow.addEventListener("click", toggleMode);
-prevArrow.addEventListener("click", toggleMode);
