@@ -1,26 +1,24 @@
 const panel = document.getElementById("panel");
 
 const buyButton = document.getElementById("buyButton");
-const detailsButton = document.getElementById("detailsButton");
+const message = document.getElementById("message");
 
 const prevArrow = document.getElementById("prevArrow");
 const nextArrow = document.getElementById("nextArrow");
 
+const detailsButton = document.getElementById("detailsButton");
 const detailsOverlay = document.getElementById("detailsOverlay");
 const closeDetails = document.getElementById("closeDetails");
 
 const contentNormal = document.getElementById("contentNormal");
 const contentVideo = document.getElementById("contentVideo");
-
-const btnRow = document.getElementById("btnRow");
 const productVideo = document.getElementById("productVideo");
 
 let isVideoMode = false;
 
 function showNormal() {
-  contentNormal.style.display = "flex";
+  contentNormal.style.display = "block";
   contentVideo.style.display = "none";
-  btnRow.style.display = "flex";
   isVideoMode = false;
 
   productVideo.pause();
@@ -29,10 +27,8 @@ function showNormal() {
 
 function showVideo() {
   contentNormal.style.display = "none";
-  contentVideo.style.display = "flex";
-  btnRow.style.display = "none";
+  contentVideo.style.display = "block";
   isVideoMode = true;
-
   productVideo.play();
 }
 
@@ -40,19 +36,6 @@ function toggleMode() {
   if (isVideoMode) showNormal();
   else showVideo();
 }
-
-nextArrow.addEventListener("click", toggleMode);
-prevArrow.addEventListener("click", toggleMode);
-
-detailsButton.addEventListener("click", () => {
-  detailsOverlay.classList.add("show");
-  panel.style.opacity = "0"; // hide panel
-});
-
-closeDetails.addEventListener("click", () => {
-  detailsOverlay.classList.remove("show");
-  panel.style.opacity = "1"; // show panel
-});
 
 buyButton.addEventListener("click", async () => {
   const response = await fetch("/create-checkout-session", {
@@ -64,7 +47,6 @@ buyButton.addEventListener("click", async () => {
   window.location = data.url;
 });
 
-// Mouse tilt
 window.addEventListener("mousemove", (e) => {
   const x = (e.clientX / window.innerWidth) * 2 - 1;
   const y = (e.clientY / window.innerHeight) * 2 - 1;
@@ -75,7 +57,7 @@ window.addEventListener("mousemove", (e) => {
   panel.style.transform = `rotateX(${20 + rotateX}deg) rotateY(${-10 + rotateY}deg)`;
 });
 
-// Snow effect
+/* Snow effect */
 const snowContainer = document.querySelector(".snow");
 
 function createSnowflake() {
@@ -95,3 +77,16 @@ function createSnowflake() {
 }
 
 setInterval(createSnowflake, 200);
+
+detailsButton.addEventListener("click", () => {
+  detailsOverlay.classList.add("show");
+  panel.classList.add("hide");
+});
+
+closeDetails.addEventListener("click", () => {
+  detailsOverlay.classList.remove("show");
+  panel.classList.remove("hide");
+});
+
+nextArrow.addEventListener("click", toggleMode);
+prevArrow.addEventListener("click", toggleMode);

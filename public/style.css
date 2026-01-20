@@ -1,188 +1,258 @@
 body {
   margin: 0;
-  background: #111;
-  overflow: hidden;
+  background: black;
   font-family: Arial, sans-serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Snow layer */
+.snow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Each snowflake */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 18px;
+  user-select: none;
+  opacity: 0.8;
+  animation: fall 8s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(110vh) translateX(40px);
+  }
 }
 
 .scene {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .panel {
-  width: 450px;
-  height: 650px;
-  background: rgba(0, 0, 0, 0.7);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  width: 85vw;
+  max-width: 550px;
+  height: 430px;
+  padding: 30px;
+  background: #111;
   border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+
+  transform-style: preserve-3d;
+  transform: rotateX(20deg) rotateY(-10deg);
+  animation: open 1.5s ease-out;
+
+  transition: transform 0.1s ease-out;
   position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
 }
 
+.panel.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes open {
+  0% {
+    transform: rotateX(90deg) translateZ(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(20deg) rotateY(-10deg);
+    opacity: 1;
+  }
+}
+
+/* CONTENT */
 .content {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   height: 100%;
-  padding: 20px;
-  gap: 15px;
 }
 
-#contentNormal {
-  display: flex;
+#contentVideo {
+  display: none;
 }
 
 .title {
   font-size: 30px;
-  color: white;
-  margin: 0;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
+/* Image */
 .image-container {
+  margin-top: 20px;
   width: 100%;
-  height: 260px;
+  height: 0;
+  padding-top: 56.25%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .image-container img {
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
   height: 100%;
   object-fit: cover;
   border-radius: 15px;
 }
 
 .price {
-  color: white;
+  margin-top: 18px;
+  font-weight: bold;
   font-size: 22px;
-}
-
-.new-price {
-  color: #00ff00;
-  margin-right: 10px;
+  color: #fff;
 }
 
 .old-price {
-  color: #999;
   text-decoration: line-through;
+  color: #888;
+  margin-left: 10px;
 }
 
-.btn-row {
-  position: absolute;
-  bottom: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
+.new-price {
+  color: #fff;
 }
 
+/* Buttons */
 .btn {
-  padding: 14px 40px;
-  border: none;
+  margin-top: 10px;
+  padding: 12px 24px;
+  border: 2px solid #fff;
   border-radius: 10px;
-  background: #1e1e1e;
+  background: transparent;
   color: white;
   cursor: pointer;
-  font-size: 18px;
-  transition: transform 0.2s ease;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  font-weight: bold;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  background: #fff;
+  color: #000;
 }
 
+/* Arrow Buttons */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 45px;
-  height: 45px;
-  border: none;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  font-size: 26px;
+  border: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 28px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
 }
 
-.left {
-  left: 10px;
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
 }
 
-.right {
-  right: 10px;
+.arrow.left {
+  left: -25px;
 }
 
-#contentVideo video {
-  width: 85%;
-  height: 85%;
+.arrow.right {
+  right: -25px;
+}
+
+/* Video style */
+#productVideo {
+  width: 80%;
+  height: 80%;
   border-radius: 15px;
-  object-fit: cover;
+  margin-top: 20px;
 }
 
-/* DETAILS OVERLAY */
+/* OVERLAY BACKGROUND */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  display: none;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
   align-items: center;
+  justify-content: center;
+  z-index: 999;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
 .overlay.show {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 
+/* OVERLAY PANEL */
 .overlay-panel {
-  width: 600px;
+  width: 85vw;
+  max-width: 550px;
+  height: 430px;
   background: #111;
   border-radius: 20px;
-  padding: 20px;
+  padding: 30px;
   color: white;
+  text-align: left;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.25);
+  position: relative;
 }
 
 .closeBtn {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
   border: none;
-  background: none;
-  color: white;
-  font-size: 22px;
+  background: transparent;
+  color: red;
+  font-size: 20px;
   cursor: pointer;
+  font-weight: bold;
 }
 
-/* Snow */
-.snow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  overflow: hidden;
+.overlay-panel p {
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.snowflake {
-  position: absolute;
-  top: -10px;
-  animation: fall 8s linear infinite;
-}
-
-@keyframes fall {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(100vh); }
+.overlay-panel ul {
+  margin: 10px 0 0 20px;
 }
