@@ -49,7 +49,9 @@ closeDetails.addEventListener("click", () => {
 });
 
 buyButton.addEventListener("click", async () => {
-  const response = await fetch("/create-checkout-session", {
+  const backendUrl = "https://YOUR_BACKEND_URL.onrender.com"; // CHANGE THIS
+
+  const response = await fetch(`${backendUrl}/create-checkout-session`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
   });
@@ -89,5 +91,4 @@ function createSnowflake() {
 
 setInterval(createSnowflake, 200);
 
-// Start in normal mode (prevents video from playing automatically)
 showNormal();
