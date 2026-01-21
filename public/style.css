@@ -9,6 +9,7 @@ body {
   height: 100vh;
 }
 
+/* Snow layer */
 .snow {
   position: fixed;
   top: 0;
@@ -194,6 +195,7 @@ body {
   display: block;
 }
 
+/* ON SALE BOX */
 .best-deal {
   position: absolute;
   top: 18px;

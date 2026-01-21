@@ -48,21 +48,18 @@ closeDetails.addEventListener("click", () => {
   panel.classList.remove("hide");
 });
 
+const stripe = Stripe("pk_test_51SrP9H2zyDlH7dFclOnSSQodqM3UrycyXJuUGxQje3Uz0lcbN43SAegV3rzu02sY0cJ641UHAV9UeZ67wFb4EYqy00CbXVuFFv");
+
 buyButton.addEventListener("click", async () => {
-  // ⭐ Replace with your Stripe Price ID
-  const priceId = "price_1Srq7L2zyDlH7dFclflLD4DV";
-
-  const stripe = Stripe("pk_test_51SrP9H2zyDlH7dFclOnSSQodqM3UrycyXJuUGxQje3Uz0lcbN43SAegV3rzu02sY0cJ641UHAV9UeZ67wFb4EYqy00CbXVuFFv");
-
   const { error } = await stripe.redirectToCheckout({
-    lineItems: [{ price: priceId, quantity: 1 }],
+    lineItems: [{ price: "price_1Srq7L2zyDlH7dFclflLD4DV", quantity: 1 }],
     mode: "payment",
-    successUrl: "https://staticresells.com/success.html",
-    cancelUrl: "https://staticresells.com",
+    successUrl: "https://www.staticresells.com/success.html",
+    cancelUrl: "https://www.staticresells.com",
   });
 
   if (error) {
-    console.error(error);
+    console.log(error.message);
   }
 });
 
