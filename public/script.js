@@ -49,7 +49,8 @@ closeDetails.addEventListener("click", () => {
 });
 
 buyButton.addEventListener("click", async () => {
-  const backendUrl = "https://YOUR_BACKEND_URL.onrender.com"; // CHANGE THIS
+  // ✅ Your backend URL (Render)
+  const backendUrl = "https://static-resells.onrender.com";
 
   const response = await fetch(`${backendUrl}/create-checkout-session`, {
     method: "POST",
