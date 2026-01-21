@@ -48,19 +48,16 @@ closeDetails.addEventListener("click", () => {
   panel.classList.remove("hide");
 });
 
-const stripe = Stripe("pk_test_51SrP9H2zyDlH7dFclOnSSQodqM3UrycyXJuUGxQje3Uz0lcbN43SAegV3rzu02sY0cJ641UHAV9UeZ67wFb4EYqy00CbXVuFFv");
-
 buyButton.addEventListener("click", async () => {
-  const { error } = await stripe.redirectToCheckout({
-    lineItems: [{ price: "price_1Srq7L2zyDlH7dFclflLD4DV", quantity: 1 }],
-    mode: "payment",
-    successUrl: "https://www.staticresells.com/success.html",
-    cancelUrl: "https://www.staticresells.com",
+  const backendUrl = "https://backend-l43k.onrender.com"; // <-- UPDATED
+
+  const response = await fetch(`${backendUrl}/create-checkout-session`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
   });
 
-  if (error) {
-    console.log(error.message);
-  }
+  const data = await response.json();
+  window.location = data.url;
 });
 
 window.addEventListener("mousemove", (e) => {
@@ -94,4 +91,5 @@ function createSnowflake() {
 
 setInterval(createSnowflake, 200);
 
+// Start in normal mode (prevents video from playing automatically)
 showNormal();
