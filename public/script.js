@@ -49,16 +49,21 @@ closeDetails.addEventListener("click", () => {
 });
 
 buyButton.addEventListener("click", async () => {
-  // ✅ Your backend URL (Render)
-  const backendUrl = "https://static-resells.onrender.com";
+  // ⭐ Replace with your Stripe Price ID
+  const priceId = "price_1Srq7L2zyDlH7dFclflLD4DV";
 
-  const response = await fetch(`${backendUrl}/create-checkout-session`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+  const stripe = Stripe("pk_test_51SrP9H2zyDlH7dFclOnSSQodqM3UrycyXJuUGxQje3Uz0lcbN43SAegV3rzu02sY0cJ641UHAV9UeZ67wFb4EYqy00CbXVuFFv");
+
+  const { error } = await stripe.redirectToCheckout({
+    lineItems: [{ price: priceId, quantity: 1 }],
+    mode: "payment",
+    successUrl: "https://staticresells.com/success.html",
+    cancelUrl: "https://staticresells.com",
   });
 
-  const data = await response.json();
-  window.location = data.url;
+  if (error) {
+    console.error(error);
+  }
 });
 
 window.addEventListener("mousemove", (e) => {
