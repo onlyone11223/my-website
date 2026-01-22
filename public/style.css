@@ -9,7 +9,7 @@ body {
   height: 100vh;
 }
 
-/* Snow layer */
+/* Snow */
 .snow {
   position: fixed;
   top: 0;
@@ -17,30 +17,26 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  overflow: hidden;
 }
 
 .snowflake {
   position: absolute;
   top: -10px;
   color: white;
-  font-size: 18px;
-  user-select: none;
   opacity: 0.8;
   animation: fall 8s linear infinite;
 }
 
 @keyframes fall {
-  0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(110vh) translateX(40px); }
+  to {
+    transform: translateY(110vh) translateX(40px);
+  }
 }
 
 .scene {
-  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .panel {
@@ -52,14 +48,9 @@ body {
   border-radius: 20px;
   color: white;
   text-align: center;
-
   transform-style: preserve-3d;
-  transform: rotateX(20deg) rotateY(-10deg);
-  animation: open 1.5s ease-out;
-
-  transition: transform 0.1s ease-out;
+  box-shadow: 0 0 30px rgba(255,255,255,0.35);
   position: relative;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
 }
 
 .panel.hide {
@@ -67,41 +58,14 @@ body {
   pointer-events: none;
 }
 
-@keyframes open {
-  0% {
-    transform: rotateX(90deg) translateZ(-200px);
-    opacity: 0;
-  }
-  100% {
-    transform: rotateX(20deg) rotateY(-10deg);
-    opacity: 1;
-  }
-}
-
-.content {
-  width: 100%;
-  height: 100%;
-}
-
-#contentVideo {
-  display: none;
-}
-
 .title {
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .image-container {
-  margin-top: 0px;
-  width: 100%;
-  height: 0;
   padding-top: 52%;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .image-container img {
@@ -110,26 +74,17 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 55%;
-  height: 100;
-  object-fit: cover;
   border-radius: 15px;
 }
 
 .price {
   margin-top: 6px;
-  font-weight: bold;
   font-size: 22px;
-  color: #fff;
 }
 
 .old-price {
-  text-decoration: line-through;
   color: #888;
-  margin-left: 10px;
-}
-
-.new-price {
-  color: #fff;
+  text-decoration: line-through;
 }
 
 .btn-row {
@@ -142,90 +97,55 @@ body {
 .btn {
   padding: 12px 24px;
   border: 2px solid #fff;
-  border-radius: 10px;
   background: transparent;
   color: white;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.2s ease;
+  border-radius: 10px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .btn:hover {
-  background: #fff;
-  color: #000;
+  background: white;
+  color: black;
 }
 
 .arrow {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   width: 50px;
   height: 50px;
   border-radius: 50%;
   border: 2px solid #fff;
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  font-size: 28px;
+  background: rgba(0,0,0,0.4);
+  color: white;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
 }
 
-.arrow:hover {
-  background: rgba(255, 255, 255, 0.8);
-  color: #000;
-}
+.arrow.left { left: -25px; }
+.arrow.right { right: -25px; }
 
-.arrow.left {
-  left: -25px;
-}
-
-.arrow.right {
-  right: -25px;
-}
-
-#productVideo {
-  width: 80%;
-  height: 80%;
-  border-radius: 15px;
-  margin: 0 auto;
-  display: block;
-}
-
-/* ON SALE BOX */
 .best-deal {
   position: absolute;
   top: 18px;
   left: 18px;
   padding: 8px 12px;
+  border: 2px solid white;
   border-radius: 10px;
-  border: 2px solid #fff;
-  background: rgba(255, 255, 255, 0.08);
   font-weight: bold;
-  font-size: 14px;
-  color: #fff;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
 }
 
+/* Overlays */
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  background: rgba(0,0,0,0.6);
   backdrop-filter: blur(6px);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 999;
-
+  align-items: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: 0.3s;
 }
 
 .overlay.show {
@@ -234,35 +154,50 @@ body {
 }
 
 .overlay-panel {
-  width: 85vw;
-  max-width: 550px;
-  height: 430px;
   background: #111;
-  border-radius: 20px;
   padding: 30px;
+  border-radius: 20px;
+  max-width: 550px;
   color: white;
-  text-align: left;
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.25);
-  position: relative;
 }
 
 .closeBtn {
   position: absolute;
   top: 15px;
   right: 15px;
-  border: none;
-  background: transparent;
   color: red;
+  background: none;
+  border: none;
   font-size: 20px;
   cursor: pointer;
-  font-weight: bold;
 }
 
-.overlay-panel p {
-  font-size: 14px;
-  line-height: 1.5;
+/* Loading */
+#loadingOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
 }
 
-.overlay-panel ul {
-  margin: 10px 0 0 20px;
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(255,255,255,0.2);
+  border-top: 6px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#loadingOverlay p {
+  margin-top: 15px;
+  font-size: 20px;
 }

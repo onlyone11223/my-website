@@ -13,6 +13,8 @@ const contentNormal = document.getElementById("contentNormal");
 const contentVideo = document.getElementById("contentVideo");
 const productVideo = document.getElementById("productVideo");
 
+const loadingOverlay = document.getElementById("loadingOverlay");
+
 let isVideoMode = false;
 
 function showNormal() {
@@ -31,8 +33,7 @@ function showVideo() {
 }
 
 function toggleMode() {
-  if (isVideoMode) showNormal();
-  else showVideo();
+  isVideoMode ? showNormal() : showVideo();
 }
 
 nextArrow.addEventListener("click", toggleMode);
@@ -49,25 +50,34 @@ closeDetails.addEventListener("click", () => {
 });
 
 buyButton.addEventListener("click", async () => {
-  const backendUrl = "https://backend-l43k.onrender.com"; // <-- UPDATED
+  loadingOverlay.style.display = "flex";
+  buyButton.disabled = true;
 
-  const response = await fetch(`${backendUrl}/create-checkout-session`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-  });
+  const backendUrl = "https://backend-l43k.onrender.com";
 
-  const data = await response.json();
-  window.location = data.url;
+  try {
+    const response = await fetch(`${backendUrl}/create-checkout-session`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" }
+    });
+
+    const data = await response.json();
+    window.location.href = data.url;
+
+  } catch (error) {
+    console.error(error);
+    loadingOverlay.style.display = "none";
+    buyButton.disabled = false;
+    alert("Checkout failed. Please try again.");
+  }
 });
 
 window.addEventListener("mousemove", (e) => {
   const x = (e.clientX / window.innerWidth) * 2 - 1;
   const y = (e.clientY / window.innerHeight) * 2 - 1;
 
-  const rotateY = x * 15;
-  const rotateX = -y * 15;
-
-  panel.style.transform = `rotateX(${20 + rotateX}deg) rotateY(${-10 + rotateY}deg)`;
+  panel.style.transform =
+    `rotateX(${20 - y * 15}deg) rotateY(${x * 15 - 10}deg)`;
 });
 
 /* Snow effect */
@@ -84,12 +94,10 @@ function createSnowflake() {
 
   snowContainer.appendChild(snowflake);
 
-  setTimeout(() => {
-    snowflake.remove();
-  }, 8000);
+  setTimeout(() => snowflake.remove(), 8000);
 }
 
 setInterval(createSnowflake, 200);
 
-// Start in normal mode (prevents video from playing automatically)
+// Start clean
 showNormal();

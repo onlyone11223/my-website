@@ -7,13 +7,13 @@
   <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
+
   <div class="snow"></div>
 
   <div class="scene">
     <div class="panel" id="panel">
       <div class="content" id="contentNormal">
 
-        <!-- ON SALE BOX -->
         <div class="best-deal">ON SALE</div>
 
         <div class="title">Static Resells</div>
@@ -47,15 +47,17 @@
     </div>
   </div>
 
+  <!-- DETAILS OVERLAY -->
   <div id="detailsOverlay" class="overlay">
     <div class="overlay-panel">
       <button class="closeBtn" id="closeDetails">X</button>
       <h2>Details</h2>
       <p>
-        Please enter a valid email address at checkout so your supplier file can be sent immediately after purchase. Access will be delivered directly to the email you provide.
+        Please enter a valid email address at checkout so your supplier file can be sent immediately after purchase.
+        Access will be delivered directly to the email you provide.
       </p>
       <p>
-        This is a digital product, and all sales are final. No refunds or exchanges will be issued once the file has been delivered.
+        This is a digital product. All sales are final. No refunds or exchanges.
       </p>
       <p>Includes:</p>
       <ul>
@@ -66,6 +68,12 @@
         <li>And more!</li>
       </ul>
     </div>
+  </div>
+
+  <!-- LOADING OVERLAY -->
+  <div id="loadingOverlay">
+    <div class="loader"></div>
+    <p>Loading...</p>
   </div>
 
   <script src="script.js"></script>
