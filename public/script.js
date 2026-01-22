@@ -17,6 +17,13 @@ const loadingOverlay = document.getElementById("loadingOverlay");
 
 let isVideoMode = false;
 
+/* ✅ Fix back-button loader bug */
+window.addEventListener("pageshow", () => {
+  loadingOverlay.style.display = "none";
+  buyButton.disabled = false;
+});
+
+/* Panel mode handling */
 function showNormal() {
   contentNormal.style.display = "block";
   contentVideo.style.display = "none";
@@ -39,6 +46,7 @@ function toggleMode() {
 nextArrow.addEventListener("click", toggleMode);
 prevArrow.addEventListener("click", toggleMode);
 
+/* Details overlay */
 detailsButton.addEventListener("click", () => {
   detailsOverlay.classList.add("show");
   panel.classList.add("hide");
@@ -49,6 +57,7 @@ closeDetails.addEventListener("click", () => {
   panel.classList.remove("hide");
 });
 
+/* Buy button with loader */
 buyButton.addEventListener("click", async () => {
   loadingOverlay.style.display = "flex";
   buyButton.disabled = true;
@@ -64,14 +73,15 @@ buyButton.addEventListener("click", async () => {
     const data = await response.json();
     window.location.href = data.url;
 
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error(err);
     loadingOverlay.style.display = "none";
     buyButton.disabled = false;
     alert("Checkout failed. Please try again.");
   }
 });
 
+/* 3D tilt */
 window.addEventListener("mousemove", (e) => {
   const x = (e.clientX / window.innerWidth) * 2 - 1;
   const y = (e.clientY / window.innerHeight) * 2 - 1;
@@ -99,5 +109,5 @@ function createSnowflake() {
 
 setInterval(createSnowflake, 200);
 
-// Start clean
+/* Start clean */
 showNormal();
